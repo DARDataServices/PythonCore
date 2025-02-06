@@ -1,0 +1,16 @@
+[build-system]
+requires = ["setuptools>=64", "wheel"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "PythonCore"
+version = "0.1.0"
+description = "DAR Python Core"
+authors = [{name = "DAR Data Services"}]
+dynamic = ["dependencies"]
+
+[tool.setuptools]
+packages = ["PythonCore"]
+
+[tool.setuptools.dynamic]
+dependencies = {file = ["requirements.txt"]}

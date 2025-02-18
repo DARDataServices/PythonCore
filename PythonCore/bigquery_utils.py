@@ -21,6 +21,16 @@ class BigQueryClient:
         results = self.bq_client.query(query)
         return bool(list(results))
 
+    def has_date_data(self, date, col_name="date"):
+        """Check if data exists for a specific day in BigQuery."""
+        query = f"""
+            SELECT *
+            FROM `{self.project_id}.{self.dataset_id}.{self.table_id}`
+            WHERE {col_name} = {date};
+        """
+        results = self.bq_client.query(query)
+        return bool(list(results))
+
     def insert_rows(self, row):
         """Insert rows into BigQuery."""
         self.bq_client.insert_rows_json(f"{self.project_id}.{self.dataset_id}.{self.table_id}", [row])

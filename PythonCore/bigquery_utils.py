@@ -26,7 +26,7 @@ class BigQueryClient:
         query = f"""
             SELECT *
             FROM `{self.project_id}.{self.dataset_id}.{self.table_id}`
-            WHERE {col_name} = {date};
+            WHERE {col_name} = '{date}';'
         """
         results = self.bq_client.query(query)
         return bool(list(results))

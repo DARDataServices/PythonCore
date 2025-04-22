@@ -11,6 +11,9 @@ class BigQueryClient:
         self.dataset_id = dataset_id
         self.table_id = table_id
 
+    def query(self, query):
+        return self.bq_client.query(query)
+
     def has_cycle_data(self, cycle_id, col_name="epoch"):
         """Check if data exists for a specific cycle_id in BigQuery."""
         query = f"""
